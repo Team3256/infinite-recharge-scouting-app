@@ -39,11 +39,10 @@ def get():
 
 @app.route('/add', methods=["POST"])
 def add():
-    print(request.form['number'])
-    #team = Team(number=request.form["number"], points=request.form["points"])
-    #db.session.add(team)
-    #db.session.commit()
-    return 'Good Job!'
+    team = Team(number=request.json["number"], points=request.json["points"])
+    db.session.add(team)
+    db.session.commit()
+    return 'Success'
 
 
 if __name__ == "__main__":

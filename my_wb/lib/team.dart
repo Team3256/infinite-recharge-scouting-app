@@ -22,6 +22,6 @@ class Team {
   }
 
   String toJson() {
-    return jsonEncode(toMap());
+    return json.encode(toMap());
   }
 }
