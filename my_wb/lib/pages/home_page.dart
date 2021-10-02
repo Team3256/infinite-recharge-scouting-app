@@ -48,19 +48,22 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         child: const Icon(Icons.refresh),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: SizedBox(
-          height: 50,
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (ctx) => NewTeamPage()),
-              );
-            },
-            child: const Text(
-              "Log New Team",
-              textScaleFactor: 2,
+      bottomSheet: Container(
+        height: 75,
+        width: double.infinity,
+        color: Colors.blue,
+        child: FlatButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (ctx) => NewTeamPage()),
+            );
+          },
+          child: const Text(
+            "Log New Team",
+            textScaleFactor: 2,
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
         ),

@@ -11,7 +11,7 @@ class TeamButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
-        print('Going to: ' + team.number.toString());
+        print('Going to: ' + team.number.data.toString());
         Navigator.push(
           context,
           MaterialPageRoute(builder: (ctx) => TeamPage(team: team)),
@@ -31,14 +31,14 @@ class TeamButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              team.number.toString(),
+              team.number.data.toString(),
               style: const TextStyle(
                 color: Colors.blueAccent,
                 fontSize: 40,
               ),
             ),
             Text(
-              "points: " + team.points.toString(),
+              "points: " + team.points.data.toString(),
               style: const TextStyle(
                 color: Colors.blueAccent,
                 fontSize: 15,

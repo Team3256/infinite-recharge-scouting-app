@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_wb/custom_widgets/new_team_page_widgets.dart';
+import 'package:my_wb/wrapper_classes/form_wrapper_classes.dart';
 import '../constants.dart';
 import '../team.dart';
 import 'package:http/http.dart' as http;
@@ -6,8 +8,32 @@ import 'package:flutter/services.dart';
 
 class NewTeamPage extends StatelessWidget {
   Team team = Team(
-    number: 100000,
-    points: 0,
+    //basic
+    number: Int(1000),
+
+//auto
+    crossedLine: Bool(false),
+    autoInner: Int(0),
+    autoOuter: Int(0),
+    autoBottom: Int(0),
+    autoFouls: Int(0),
+    autoDisconnect: Bool(false),
+
+//teleop
+    teleopInner: Int(0),
+    teleopOuter: Int(0),
+    teleopBottom: Int(0),
+    teleopFouls: Int(0),
+    teleopDisconnect: Bool(false),
+
+//endgame
+    endgameTask: Str("none"),
+    endgameFouls: Int(0),
+    endgameDisconnect: Bool(false),
+
+//misc
+    comments: Str(""),
+    points: Int(0),
   );
 
   NewTeamPage({Key? key}) : super(key: key);
@@ -36,7 +62,7 @@ class NewTeamPage extends StatelessWidget {
                   textFiltered += text[i];
                 }
                 if (textFiltered.isNotEmpty) {
-                  team.number = int.parse(text);
+                  team.number.data = int.parse(text);
                 }
               },
             ),
@@ -44,6 +70,8 @@ class NewTeamPage extends StatelessWidget {
               'Total Points:',
               textScaleFactor: 2,
             ),
+            const FormText(text: 'Hello William'),
+            FormCheckbox(team.crossedLine),
           ],
         ),
       ),
@@ -70,6 +98,12 @@ class NewTeamPage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print(team.toJson());
+        },
+        child: const Icon(Icons.refresh),
       ),
     );
   }

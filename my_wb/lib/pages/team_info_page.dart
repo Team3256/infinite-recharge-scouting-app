@@ -8,22 +8,22 @@ class TeamPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> infoContainers = [];
+    team.toMap().keys.forEach(
+          (k) => infoContainers.add(
+            Text(
+              k + ": " + team.toMap()[k].toString(),
+              textScaleFactor: 2,
+            ),
+          ),
+        );
     return Scaffold(
       appBar: AppBar(
         title: const Text('Team Info Page'),
       ),
       body: Center(
         child: Column(
-          children: [
-            Text(
-              team.number.toString(),
-              textScaleFactor: 3,
-            ),
-            Text(
-              team.points.toString(),
-              textScaleFactor: 2,
-            ),
-          ],
+          children: infoContainers,
         ),
       ),
     );
