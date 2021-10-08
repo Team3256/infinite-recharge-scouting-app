@@ -45,7 +45,7 @@ class NewTeamPage extends StatelessWidget {
         title: const Text('Log New Team Page'),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
             const Text(
               'Team Number:',
@@ -70,8 +70,11 @@ class NewTeamPage extends StatelessWidget {
               'Total Points:',
               textScaleFactor: 2,
             ),
-            const FormText(text: 'Hello William'),
             FormCheckbox(team.crossedLine),
+            FormCounter("auto inner:", team.autoInner),
+            FormCounter("auto outer:", team.autoOuter),
+            FormCounter("auto bottom:", team.autoBottom),
+            FormCounter("auto fouls:", team.autoFouls),
           ],
         ),
       ),
