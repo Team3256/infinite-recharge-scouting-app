@@ -27,7 +27,7 @@ class NewTeamPage extends StatelessWidget {
     teleopDisconnect: Bool(false),
 
 //endgame
-    endgameTask: Str("none"),
+    endgameTask: Str("None"),
     endgameFouls: Int(0),
     endgameDisconnect: Bool(false),
 
@@ -47,34 +47,28 @@ class NewTeamPage extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
-            const Text(
-              'Team Number:',
-              textScaleFactor: 3,
-            ),
-            TextField(
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              onChanged: (text) {
-                String textFiltered = '';
-                for (int i = 0; i < text.length; i++) {
-                  textFiltered += text[i];
-                }
-                if (textFiltered.isNotEmpty) {
-                  team.number.data = int.parse(text);
-                }
-              },
-            ),
-            const Text(
-              'Total Points:',
-              textScaleFactor: 2,
-            ),
-            FormCheckbox(team.crossedLine),
+            FormText("Auto: 15 sec"),
+            FormCheckbox("crossed line?", team.crossedLine),
             FormCounter("auto inner:", team.autoInner),
             FormCounter("auto outer:", team.autoOuter),
             FormCounter("auto bottom:", team.autoBottom),
             FormCounter("auto fouls:", team.autoFouls),
+            FormCheckbox("Disconnect?", team.autoDisconnect),
+            FormText("Teleop: 100 sec"),
+            FormCounter("teleop inner:", team.teleopInner),
+            FormCounter("teleop outer:", team.teleopOuter),
+            FormCounter("teleop bottom:", team.teleopBottom),
+            FormCounter("teleop fouls:", team.teleopFouls),
+            FormCheckbox("Disconnect?", team.teleopDisconnect),
+            FormText("Endgame: 30 sec"),
+            FormMultChoice(
+              "end game task:",
+              ['Hang', 'Park', 'Level', 'None'],
+              team.endgameTask,
+            ),
+            FormCounter("endgame fouls:", team.endgameFouls),
+            FormCheckbox("Disconnect?", team.endgameDisconnect),
+            const SizedBox(height: 100),
           ],
         ),
       ),
