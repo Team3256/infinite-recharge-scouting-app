@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_wb/custom_widgets/new_team_page_widgets.dart';
+import 'package:my_wb/custom_widgets/team_number_widget.dart';
 import 'package:my_wb/wrapper_classes/form_wrapper_classes.dart';
 import '../constants.dart';
 import '../team.dart';
@@ -47,6 +48,7 @@ class NewTeamPage extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
+            TeamInput(team.number),
             FormText("Auto: 15 sec"),
             FormCheckbox("crossed line?", team.crossedLine),
             FormCounter("auto inner:", team.autoInner),
@@ -63,11 +65,12 @@ class NewTeamPage extends StatelessWidget {
             FormText("Endgame: 30 sec"),
             FormMultChoice(
               "end game task:",
-              ['Hang', 'Park', 'Level', 'None'],
+              const ['Hang', 'Park', 'Level', 'None'],
               team.endgameTask,
             ),
             FormCounter("endgame fouls:", team.endgameFouls),
             FormCheckbox("Disconnect?", team.endgameDisconnect),
+            CommentBox(team.comments),
             const SizedBox(height: 100),
           ],
         ),

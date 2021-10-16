@@ -223,3 +223,25 @@ class SelectButton extends StatelessWidget {
     );
   }
 }
+
+class CommentBox extends StatelessWidget {
+  final Str comment;
+  const CommentBox(this.comment, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      onChanged: (data) {
+        comment.data = data;
+      },
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        hintText: 'comments',
+      ),
+      maxLines: null,
+      minLines: 1,
+    );
+  }
+}
