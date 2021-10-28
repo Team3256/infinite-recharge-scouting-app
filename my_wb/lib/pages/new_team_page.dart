@@ -7,6 +7,8 @@ import '../team.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 
+import 'home_page.dart';
+
 class NewTeamPage extends StatelessWidget {
   Team team = Team(
     //basic
@@ -89,6 +91,10 @@ class NewTeamPage extends StatelessWidget {
               },
               body: team.toJson(),
             );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (ctx) => MyHomePage()),
+            );
           },
           child: const Text(
             "Submit",
@@ -98,12 +104,6 @@ class NewTeamPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(team.toJson());
-        },
-        child: const Icon(Icons.refresh),
       ),
     );
   }

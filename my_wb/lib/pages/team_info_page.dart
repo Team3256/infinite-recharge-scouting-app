@@ -22,7 +22,7 @@ class TeamPage extends StatelessWidget {
         title: const Text('Team Info Page'),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: infoContainers,
         ),
       ),

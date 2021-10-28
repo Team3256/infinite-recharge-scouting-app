@@ -8,8 +8,7 @@ import '../team.dart';
 import 'new_team_page.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -17,6 +16,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Team> teams = [];
+  bool onLoad = true;
 
   void updateData() async {
     final response = await http.get(Uri.parse(server + "/all"));
@@ -35,9 +35,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    if (onLoad) {
+      onLoad = false;
+      updateData();
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('MyWB Scouting Home Page'),
       ),
       body: Center(
         child: TeamsDisplay(teams: teams),
